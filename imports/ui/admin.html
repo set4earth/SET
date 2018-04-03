@@ -1,0 +1,21 @@
+<template name="admin">
+	<div class="row">
+	    <div class="col-md-4">
+	      <h4>Latest Eco-friendly Projects</h4>
+	      <hr>
+	      {{#each projectsList}}
+	        {{> projectsTable}}
+	      {{/each}}
+	    </div>
+  </div>
+</template>
+
+<template name="projectsTable">
+	<ul class="list-inline">
+  		<li class="list-inline-item">{{title}}</li>
+  		<li class="list-inline-item">By {{address}}</li>
+  		<li class="list-inline-item"><button>&times;</button></li>
+	</ul>
+</template>
+
+<!-- 4112496843 / kkbk0008054 -->

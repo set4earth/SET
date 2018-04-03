@@ -1,0 +1,456 @@
+<body>
+</body>
+
+<template name="applicationLayout">
+  <div>
+    {{> nav}}
+  </div>
+  
+  <div class="container-fluid">
+    {{> showCase}}
+  </div>
+</template>
+
+<template name="createProjectLayout">
+  <div>
+    {{> nav}}
+  </div>
+
+  <div class="container-fluid">
+    <div class="col-md-6">
+      {{> createProjectForm}}
+    </div>
+  </div>
+</template>
+
+<template name="projectInfoLayout">
+  <div>
+    {{> nav}}
+  </div>
+
+  <div class="container-fluid">
+    {{> projectInfo}}
+  </div>
+</template>
+
+<template name="sellLayout">
+  <div>
+    {{> nav}}
+  </div>
+  <div class="container">
+    <div class="col-md-6">
+      {{> createProductListing}}
+    </div>
+
+    <div class="col-md-6">
+      <p>
+        SET Platform promotes Eco-friendly products & environment Savvy Technology on Blockchain platform. The SET is a discount Token, which will be used for promoting sales of anti-pollution products and also to create ecosystem for Eco friendly business Entrepreneurs across the globe.
+      </p>
+    </div>
+  </div>
+</template>
+
+<template name="buyLayout">
+  <div>
+    {{> nav}}
+  </div>
+
+  <div class="container">
+    {{> productCard}}
+  </div>
+</template>
+
+<template name="createProductListing">
+  <h4>Create Product Listing</h4>
+  <hr>
+  <form>
+    <div class="form-group">
+      <label for="projectTitle">Product Name</label>
+      <input type="text" class="form-control" name="productName" placeholder="Product Name">
+    </div>
+
+    <div class="form-group">
+      <label for="productPrice">Price</label>
+      <input type="text" class="form-control" name="productPrice" placeholder="Price">
+    </div>
+
+    <div class="form-group">
+      <label for="projectDescription">Product Description</label>
+      <textarea class="form-control" name="productDescription" rows="5"></textarea>
+      <p class="help-block">Please add your product description here</p>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputFile">Upload Product Image</label>
+      <input type="file" class="form-control-file" name="productImage" aria-describedby="prodImage">
+      <small id="prodImage" class="form-text text-muted">Please Upload an image of your product</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>  
+</template>
+
+<template name="nav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img src="http://www.set4earth.com/mywebsite/wp-content/uploads/2018/02/set-logo.png" style="width: 40px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/createProject">Create Project</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{> loginButtons}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <a class="btn btn-primary" href="/buy">
+       Buy
+      </a>
+
+      <a class="btn btn-primary" href="/sell">
+       Sell
+      </a>
+    </div>
+  </nav>
+</template>
+
+<template name="showCase">
+  <div class="jumbotron">
+    <blockquote class="blockquote text-right">
+      <p class="mb-0">Global platform/marketplace for buying & selling of eco-friendly products.</p>
+      <footer class="blockquote-footer"><cite title="Source Title">Save Environment Token</cite></footer>
+    </blockquote>
+  </div> 
+   <div class="row">
+    <div class="col-md-4">
+      <h4>Latest Eco-friendly Projects</h4>
+      <hr>
+      {{#each projects}}
+        {{> projectCard}}
+      {{/each}}
+    </div>
+
+    <div class="col-md-8">
+      <h6>Latest Eco-friendly Products</h6>
+      <hr>
+      {{> productCard}}
+    </div>
+  </div>
+</template>
+
+<template name="projectCard">
+  <div class="card text-white bg-primary mb-3">
+    <div class="card-header">{{title}}</div>
+    <a type="button" class="btn btn-secondary" id="viewProject" href="/projectInfo">View Project Details</a>
+    <div class="card-body">
+      <h4 class="card-title">Rockefeller</h4>
+      <img src="/wardwizard3.png" style="width: 100%; display: block;"/>
+
+      <hr/>
+
+      <p class="card-text">{{description}}</p>
+    </div>
+  </div>
+</template>
+
+<template name="pRating">
+  <div class="container">      
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="rating-block">
+          <h4>Average user rating</h4>
+          <h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <h4>Rating breakdown</h4>
+
+        <div class="pull-left">
+          <div class="pull-left" style="width:35px; line-height:1;">
+            <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
+          </div>
+          <div class="pull-left" style="width:180px;">
+            <div class="progress" style="height:9px; margin:8px 0;">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 100%">
+              <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right" style="margin-left:10px;">1</div>
+        </div>
+
+        <div class="pull-left">
+          <div class="pull-left" style="width:35px; line-height:1;">
+            <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
+          </div>
+          <div class="pull-left" style="width:180px;">
+            <div class="progress" style="height:9px; margin:8px 0;">
+              <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+              <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right" style="margin-left:10px;">1</div>
+        </div>
+
+        <div class="pull-left">
+          <div class="pull-left" style="width:35px; line-height:1;">
+            <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
+          </div>
+          <div class="pull-left" style="width:180px;">
+            <div class="progress" style="height:9px; margin:8px 0;">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+              <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right" style="margin-left:10px;">0</div>
+        </div>
+
+        <div class="pull-left">
+          <div class="pull-left" style="width:35px; line-height:1;">
+            <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
+          </div>
+          <div class="pull-left" style="width:180px;">
+            <div class="progress" style="height:9px; margin:8px 0;">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+              <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right" style="margin-left:10px;">0</div>
+        </div>
+
+        <div class="pull-left">
+          <div class="pull-left" style="width:35px; line-height:1;">
+            <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
+          </div>
+          <div class="pull-left" style="width:180px;">
+            <div class="progress" style="height:9px; margin:8px 0;">
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+              <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right" style="margin-left:10px;">0</div>
+        </div>
+      </div>      
+    </div>      
+    
+    <div class="row">
+      <div class="col-sm-7">
+        <hr/>
+        <div class="review-block">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+              <div class="review-block-name"><a href="#">lorem</a></div>
+              <div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+            </div>
+            <div class="col-sm-9">
+              <div class="review-block-rate">
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="review-block-title">Lorem ipsum dolor sit.</div>
+              <div class="review-block-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus placeat mollitia, laudantium a animi quaerat. Sequi sit corporis tempore, architecto blanditiis, beatae iure numquam eaque quod, illum cum, nisi veritatis.7</div>
+            </div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+              <div class="review-block-name"><a href="#">lorem</a></div>
+              <div class="review-block-date">January 23, 2016<br/>1 day ago</div>
+            </div>
+            <div class="col-sm-9">
+              <div class="review-block-rate">
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="review-block-title">Lorem ipsum dolor sit.</div>
+              <div class="review-block-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus placeat mollitia, laudantium a animi quaerat. Sequi sit corporis tempore, architecto blanditiis, beatae iure numquam eaque quod, illum cum, nisi veritatis.7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="productCard">
+  <div class="col-md-4">
+    <div class="card bg-light mb-3" >
+      <div class="card-header">Vyom</div>
+      <button type="button" class="btn btn-primary">₹13,999.00</button>
+      <div class="card-body">
+        <h4 class="card-title">Hydrogen Water Purifier</h4>
+        <img src="/wardwizard1.jpg" style="width: 100%; display: block;"/>
+
+        <hr/>
+
+        <p class="card-text">The portable Hydrogen Water Cup is a technologically advanced unique product from the house of WardWizard with utmost health benefits.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-light mb-3" >
+      <div class="card-header">Vyom</div>
+      <button type="button" class="btn btn-primary">₹4,899.00</button>
+      <div class="card-body">
+        <h4 class="card-title">Car Purifier</h4>
+        <img src="/wardwizard5.jpg" style="width: 100%; display: block;"/>
+
+        <hr/>
+
+        <p class="card-text">VYOM Car Purifiers are your perfect solution to the problem of polluted air inside the car.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-light mb-3" >
+      <div class="card-header">Vyom</div>
+      <button type="button" class="btn btn-primary">₹16,999.00</button>
+      <div class="card-body">
+        <h4 class="card-title">Home Air Purifier</h4>
+        <img src="/wardwizard2.png" style="width: 100%; display: block;"/>
+
+        <hr/>
+
+        <p class="card-text">With air pollution becoming a major concern in India, VYOM Air Purifiers are portable technology with an air quality sensor indicator and 6-filter purification phase.</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="createProjectForm">
+  <form>     
+    <div class="form-group">
+      <label for="projectTitle">Title</label>
+      <input type="text" class="form-control" name="projectTitle" placeholder="Project Title">
+    </div>
+
+    <div class="form-group">
+      <label for="minimumContribution">Minimum Contribution (in SET)</label>
+      <input type="text" class="form-control" name="minimumContribution" placeholder="Minimum Contribution for the Project">
+    </div>
+
+    <div class="form-group">
+      <label for="projectDescription">Project Description</label>
+      <textarea class="form-control" name="projectDescription" rows="10"></textarea>
+      <p class="help-block">Please add your project description here</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>  
+</template>
+
+<template name="projectInfo">
+  <div class="row">
+    {{#each projectDetails}}
+      <div class="col-md-7">
+          {{> projectCard}}
+      </div> 
+
+      <div class="col-md-5">
+        <h4>Project Details</h4>
+
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Title: 
+            <span class="badge badge-primary badge-pill">{{title}}</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Project Owner: 
+            <span class="badge badge-primary badge-pill">Mr. Owner,{{address}} </span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Minimum Contribution:
+            <span class="badge badge-primary badge-pill">{{minAmount}} SET</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Balance:
+            <span class="badge badge-primary badge-pill" id="balance"></span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            No of people contributed:
+            <span class="badge badge-primary badge-pill" id="noOfContributer"></span>
+          </li>
+        </ul>
+
+        <hr>
+        
+        <form>
+          <div class="form-group">
+            <label for="minimumContribution">Minimum Contribution</label>
+            <input type="text" class="form-control" name="minimumContribution" aria-describedby="minContHelp" placeholder="Minimum Contribution Value">
+            <small id="minContHelp" class="form-text text-muted">Minimum Contribution is the least amount that can be invested in this project</small>
+          </div>
+
+          <button type="submit" class="btn btn-outline-primary">Contribute</button>
+          <button type="button" class="btn btn-primary">Create Withdraw Request</button>
+        </form>
+      </div>
+      {{> pRating}}
+    {{/each}}
+  </div>
+</template>
